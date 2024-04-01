@@ -1,6 +1,8 @@
 type Query {
     listarProductos: [Producto],
-    buscarProductoById(id: String): Producto
+    buscarProductoById(id: String): Producto,
+    listarCategorias: [Categoria],
+    buscarCategoriaById(id: Float): Categoria
 }
 
 type Producto {
@@ -14,5 +16,6 @@ type Producto {
 type Categoria {
     id: Float,
     nombre: String
+    Productos: [Producto]
 }
 
