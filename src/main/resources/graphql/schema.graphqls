@@ -5,6 +5,14 @@ type Query {
     buscarCategoriaById(id: Float): Categoria
 }
 
+
+type Mutation{
+    guardarProducto(productoRequest: ProductoRequest): Producto
+    actualizarProducto(id: String, productoRequest: ProductoRequest): Producto
+    eliminarProducto(id: String): String
+
+}
+
 type Producto {
     id: String,
     nombre: String,
@@ -18,4 +26,15 @@ type Categoria {
     nombre: String
     Productos: [Producto]
 }
+
+
+input ProductoRequest{
+    nombre: String,
+    precio: Float,
+    cantidad: Int,
+    categoriaId: Float
+    
+}
+
+
 
