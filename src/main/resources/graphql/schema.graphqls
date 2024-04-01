@@ -1,0 +1,18 @@
+type Query {
+    listarProductos: [Producto],
+    buscarProductoById(id: String): Producto
+}
+
+type Producto {
+    id: String,
+    nombre: String,
+    precio: Float,
+    cantidad: Int,
+    categoria: Categoria
+}
+
+type Categoria {
+    id: Float,
+    nombre: String
+}
+

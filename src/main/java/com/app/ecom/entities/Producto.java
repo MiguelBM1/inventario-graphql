@@ -1,9 +1,5 @@
 package com.app.ecom.entities;
 
-import java.util.Locale;
-
-import com.github.javafaker.Faker;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

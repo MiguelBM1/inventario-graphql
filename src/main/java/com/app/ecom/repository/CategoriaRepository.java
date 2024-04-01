@@ -1,4 +1,4 @@
-package com.app.ecom.entities.repository;
+package com.app.ecom.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package com.app.ecom.inventarioservicegraphql;
+package com.app.ecom;
 
 import java.util.List;
 import java.util.Random;
@@ -9,10 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.app.ecom.entities.repository.CategoriaRepository;
-import com.app.ecom.entities.repository.ProductoRepository;
 import com.app.ecom.entities.Categoria;
 import com.app.ecom.entities.Producto;
+import com.app.ecom.repository.CategoriaRepository;
+import com.app.ecom.repository.ProductoRepository;
 
 @SpringBootApplication
 public class InventarioServiceGraphqlApplication {
@@ -22,32 +22,26 @@ public class InventarioServiceGraphqlApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(CategoriaRepository categoriaRepository, ProductoRepository productoRepository) {
-	 	Random random = new Random();	
+	CommandLineRunner commandLineRunner(CategoriaRepository categoriaRepository, ProductoRepository productoRepository){
+		Random random = new Random();
 		return args -> {
-	 			List.of("Computadoras", "Impresoras", "Smarthphones").forEach(cat -> {
-	 				Categoria categoria = Categoria.builder().nombre(cat).build();
-					categoriaRepository.save(categoria);
-				});
-				categoriaRepository.findAll().forEach(categoria -> {
-					for (int i = 0; i < 10; i++) {
+			List.of("Computadoras","Impresoras","Smartphones").forEach(cat -> {
+				Categoria categoria = Categoria.builder().nombre(cat).build();
+				categoriaRepository.save(categoria);
+			});
+			categoriaRepository.findAll().forEach(categoria -> {
+				for(int i = 0;i < 10; i++){
 					Producto producto = Producto.builder()
 							.id(UUID.randomUUID().toString())
-							.nombre("Computadora " + i)
-							.precio(100 + Math.random() * 50000)
+							.nombre("Computadora "+i)
+							.precio(100 + Math.random()*50000)
 							.cantidad(random.nextInt(100))
 							.categoria(categoria)
 							.build();
 					productoRepository.save(producto);
-
-						
-
 				}
 			});
-
-
-	};
+		};
 	}
-	
 }
 
